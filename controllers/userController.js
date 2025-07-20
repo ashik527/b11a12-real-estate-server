@@ -1,5 +1,4 @@
 const User = require('../models/User');
-const jwt = require('jsonwebtoken');
 
 // Save or update user on login/register
 exports.saveUser = async (req, res) => {
@@ -66,19 +65,5 @@ exports.deleteUser = async (req, res) => {
   } catch (err) {
     console.error('Delete User Error:', err);
     res.status(500).json({ error: 'Failed to delete user' });
-  }
-};
-
-// JWT token generation (on login/register)
-exports.generateToken = async (req, res) => {
-  const { email } = req.body;
-  if (!email) return res.status(400).send({ error: 'Missing email' });
-
-  try {
-    const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '1d' });
-    res.send({ token });
-  } catch (err) {
-    console.error('JWT Generation Error:', err);
-    res.status(500).json({ error: 'Failed to generate token' });
   }
 };
