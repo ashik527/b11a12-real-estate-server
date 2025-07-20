@@ -34,8 +34,8 @@ mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('✅ MongoDB connected'))
-.catch((err) => console.error('❌ MongoDB connection error:', err));
+.then(() => console.log(' MongoDB connected'))
+.catch((err) => console.error(' MongoDB connection error:', err));
 
 // Root route
 app.get('/', (req, res) => {
@@ -43,5 +43,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`🚀 Server running at http://localhost:${port}`);
+  console.log(` Server running at http://localhost:${port}`);
 });
